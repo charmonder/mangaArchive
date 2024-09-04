@@ -1,0 +1,50 @@
+<%- include ("partials/header.ejs") %>
+
+<% if (locals.details) { %>
+
+    <div class="flex col main-content">
+
+        <div class="title">
+            <h2><em><%= details.title %></em></h2>
+        </div>
+    
+        <div class="flex manga-container">
+            <div class="flex manga-container">
+                <img src="<%= details.coverURL %>" alt="cover-image" class="recs-img">
+            </div>
+    
+            <div class="flex table">
+                <table>
+                    <tr>
+                        <td><strong>Author</strong></td>
+                        <td class="table-details"><%= details.authorName %></td>
+                    </tr>
+    
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td class="status table-details"><%= details.status %></td>
+                    </tr>
+    
+                    <tr>
+                        <td class="top"><strong>Genre</strong></td>
+                        <td class="flex genre-container">
+                            <% details.tags.forEach ((tag) => { %>
+                                <div class="genre table-details"><%= tag.attributes.name.en %></div>
+                            <% }) %>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="top"><strong>Description</strong></td>
+                        <td class="description table-details"><%= details.description %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+<% } else { %>
+    <p>Details not found.</p>
+<% } %>
+
+
+<%- include ("partials/footer.ejs") %>

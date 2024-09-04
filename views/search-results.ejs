@@ -1,0 +1,25 @@
+<div class="flex col">
+
+    <div class="search-results">
+
+        <% data.forEach ((manga) =>{ %>
+
+            <div class="flex col card">
+                <form action="/manga-details" method="POST">
+                    <button type="submit" title="<%= manga.title %>" class="flex col">
+                        <img src="<%= manga.coverURL %>" alt="" class="recs-img">
+                        <p class="manga-title"><%= manga.title %></p>
+                    </button>
+                    <input type="hidden" name="mangaID" value="<%= manga.mangaID %>">
+                    <input type="hidden" name="coverURL" value="<%= manga.coverURL %>">
+                </form>
+            </div>
+        <% }) %>
+
+    </div>
+
+    <button id="load-more">Load More</button>
+    <p id="end-message" style="display: none">End of Search Result.</p>
+        
+</div>
+

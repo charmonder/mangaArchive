@@ -1,0 +1,28 @@
+<%- include ("partials/header.ejs") %>
+
+<div class="flex col main-content">
+
+    <% if (locals.data) { %>
+        <% if (data == 0) { %>
+            <p>Manga not found.</p>
+        <% } else { %>
+            <%- include ("search-results.ejs") %>
+        <% } %>
+    <% } %>
+
+    <% if (locals.recommendation) { %>
+        <%- include ("recommendation.ejs") %>
+    <% } %>
+
+    <% if (locals.randomQuote) { %>
+            <h1 class="quote"><em><%- randomQuote %></em></h1>
+            <p class="speaker"><%= randomSpeaker%></p>
+    <% } %>
+
+</div>
+
+</main>
+
+<script src="/script.js"></script>
+
+<%- include ("partials/footer.ejs") %>

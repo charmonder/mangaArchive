@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+    <title>Manga Archive - A Manga Finder Site</title>
+</head>
+<body class="flex col">
+
+    <main class="flex col">
+
+        <div class="flex col header">
+            <img src="/images/logo.svg" alt="logo" class="logo">
+            <div class="search-bar">
+                <form action="/search-results" id="form" method="POST" class="flex">
+                    <input type="text" name="userInquiry" placeholder="Enter a manga title" autocomplete="off">
+                    <button type="submit" class="flex search-btn"><img src="/images/search.svg" class="search-icon" alt="search-icon"></button>
+                </form>
+            </div>
+    
+            <div class="flex row">
+                                
+                <h3 class="flex recs-text"><img src="/images/star.svg" class="star-icon" alt="star-icon">Recommend Me Something!</h3>
+    
+                <form action="/recommendation" method="POST" class="flex">
+                    <select name="genre">
+                        <option value="random">Random</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="boyslove">Boys' Love</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="girlslove">Girls' Love</option>
+                        <option value="horror">Horror</option>
+                        <option value="isekai">Isekai</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="psychological">Psychological</option>
+                        <option value="romance">Romance</option>
+                        <option value="sliceoflife">Slice of Life</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                    <button type="submit" class="recs-btn">GO</button>
+                </form>
+            </div>
+        </div>
+
+    

@@ -1,0 +1,40 @@
+<div class="title">
+    <h1><em><%= recommendation.title %></em></h1>
+</div>
+
+<div class="flex manga-container">
+    <div class="flex manga-container">
+        <img src="<%= recommendation.coverURL %>" alt="cover-image" class="recs-img">
+    </div>
+    <div class="flex table">
+        <table>
+            <tr>
+                <td><strong>Author</strong></td>
+                <td class="table-details"><%= recommendation.authorName %></td>
+            </tr>
+
+            <tr>
+                <td><strong>Status</strong></td>
+                <td class="status table-details"><%= recommendation.status %></td>
+            </tr>
+
+            <tr>
+                <td class="top"><strong>Genre</strong></td>
+                <td class="flex genre-container">
+                    <% recommendation.tags.forEach ((tag) => { %>
+                        <div class="genre table-details"><%= tag.attributes.name.en %></div>
+                    <% }) %>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="top"><strong>Description</strong></td>
+                <td class="description table-details"><%= recommendation.description %></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+
