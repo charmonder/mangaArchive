@@ -42,6 +42,22 @@ app.get("/", (req, res) => {
   res.render("index.ejs", { randomQuote, randomSpeaker });
 });
 
+app.get("/proxy-image", async (req, res) => {
+  const { url } = req.query;
+
+  if (!url) {
+    return res.status(400).send("URL query parameter is required");
+  }
+
+  try {
+    const response = await axios.get(url, { responseType: "arraybuffer" });
+    res.set("Content-Type", response.headers["content-type"]);
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send("Error fetching the image");
+  }
+});
+
 app.post("/search-results", async (req, res) => {
   try {
     const response = await axios.get(
@@ -61,7 +77,11 @@ app.post("/search-results", async (req, res) => {
         const fileName = imgResponse.data.data.attributes.fileName;
         const coverURL = `https://uploads.mangadex.org/covers/${mangaID}/${fileName}`;
 
-        return { title: mangaTitle, mangaID, coverURL };
+        return {
+          title: mangaTitle,
+          mangaID,
+          coverURL: `/proxy-image?url=${encodeURIComponent(coverURL)}`,
+        };
       })
     );
 
@@ -152,7 +172,7 @@ app.post("/recommendation", async (req, res) => {
         tags,
         description,
         authorName,
-        coverURL,
+        coverURL: `/proxy-image?url=${encodeURIComponent(coverURL)}`,
       };
 
       res.render("index.ejs", { recommendation: mangaData });
